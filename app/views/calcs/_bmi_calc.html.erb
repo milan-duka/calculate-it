@@ -1,0 +1,48 @@
+<div class="center" id="calculator">
+<br>
+<br>
+<%= form_tag bmi_calc_path, remote: true, method: :post, id:'calculation-form' do %>
+  <div class="form-group row">
+      <div class= "control-label col-sm-offset-3 col-sm-2">
+        <%= label_tag "Your height (cm)" %>
+      </div>
+      <div class="col-sm-2">
+        <%= text_field_tag :first, params[:first], class: "form-control", placeholder: "height", autofocus: true, required: true, type: "number"  %>
+      </div>
+  </div>
+  <div class="form-group row">
+      <div class= "control-label col-sm-offset-3 col-sm-2">
+        <%= label_tag "Your weight (kg)" %>
+      </div>
+      <div class="col-sm-2">
+        <%= text_field_tag :second, params[:second], class: "form-control", placeholder: "weight", required: true, type: "number" %>
+      </div>
+  </div>
+  <% if @result %>
+    <div id="calc-results" class="form-group row">
+      <div class= "control-label col-sm-offset-3 col-sm-2">
+        <%= label_tag 'Your BMI' %>
+      </div>
+      <div class="col-sm-2">
+        <%= text_field_tag :result, @result, class: "form-control", placeholder: "result", disabled: true %>
+      </div>
+    </div>
+  <% end %>
+  <%= render 'shared/spinner' %>
+  <br>
+  <div class="form-group row">
+      <div class=" col-sm-10 col-sm-offset-1">
+        <%= button_tag(type: :submit, class: "btn btn-primary btn-md") do %>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Calculate BMI
+        <% end %>
+        <%= button_tag(name: :reset_fields, class: "btn btn-danger btn-md") do %>
+          <span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Reset
+        <% end %>
+      </div>
+  </div>
+<% end %>
+<div id="calc-errors"></div>
+</div>
+<% unless @rendered %>
+<%= render 'articles/show_art' %>
+<% end %>
