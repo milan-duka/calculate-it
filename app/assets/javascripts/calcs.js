@@ -12,6 +12,7 @@ init_stock_lookup = function() {
   
   $('#calculation-form').on('ajax:success', function(event, data, status){
   $('#calculator').replaceWith(data);
+  $('#result-field').focus();
     init_stock_lookup();
   });
   

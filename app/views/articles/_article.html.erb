@@ -3,7 +3,11 @@
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well well-lg">
         <div class="article-title">
-          <%= link_to art.title, article_path(art) %>
+          <% if art.id == 1 %>
+            <%= link_to 'BMI Calculator', bmi_calc_path, method: :get %>
+          <% else %>
+            <%= link_to art.title, article_path(art) %>
+          <% end %>
         </div>
         <div class="article-body">
           <%= truncate(art.description, length: 100) %>

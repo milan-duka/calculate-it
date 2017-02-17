@@ -81,6 +81,10 @@ $navbar-default-bg: #014270;
   width: auto !important;
 }
 
+div:focus {
+    background-color: #014270;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
